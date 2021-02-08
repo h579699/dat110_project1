@@ -7,8 +7,9 @@ public class Message {
 
 	public Message(byte[] payload) {
 		this.payload = payload; // check for length within boundary
-		if(payload.length > 127) {
+		if(payload.length > MessageConfig.SEGMENTSIZE - 1) {
 			System.out.println("For stor payload, maks 127 bytes");
+			//Håndtering?
 		}
 	}
 
@@ -26,7 +27,8 @@ public class Message {
 		
 		// encapulate/encode the payload of this message in the
 		// encoded byte array according to message format
-		encoded = new byte[128];
+		//encoded = new byte [payload.length + 1]; //Uten padding?
+		encoded = new byte[MessageConfig.SEGMENTSIZE];
 		encoded[0] = (byte) payload.length;
 		for(int i = 1; i <= payload.length; i++) {
 			encoded[i] = payload[i-1];

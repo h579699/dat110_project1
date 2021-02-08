@@ -1,10 +1,6 @@
 package no.hvl.dat110.rpc;
 
-import java.math.BigInteger;
 import java.nio.ByteBuffer;
-import java.util.Arrays;
-
-import no.hvl.dat110.TODO;
 
 public class RPCUtils {
 
@@ -29,7 +25,6 @@ public class RPCUtils {
 
 	public static String unmarshallString(byte[] data) {
 
-		
 		byte[] stringBytes = new byte[data.length-1];
 
 		// unmarshall String contained in data into decoded

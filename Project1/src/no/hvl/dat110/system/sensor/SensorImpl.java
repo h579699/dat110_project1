@@ -1,5 +1,7 @@
 package no.hvl.dat110.system.sensor;
 
+import java.util.Random;
+
 import no.hvl.dat110.rpc.RPCImpl;
 import no.hvl.dat110.rpc.RPCUtils;
 
@@ -9,11 +11,15 @@ public class SensorImpl implements RPCImpl {
 
 	public int read() {
 
-		long seconds = System.currentTimeMillis();
-
-		double temp = RANGE * Math.sin(seconds / 1000);
-
-		return (int) Math.ceil(temp);
+//		long seconds = System.currentTimeMillis();
+//
+//		double temp = RANGE * Math.sin(seconds / 1000);
+//
+//		return (int) Math.ceil(temp);
+		
+		Random ran = new Random();
+		
+		return ran.nextInt(RANGE);
 	}
 	
 	public byte[] invoke(byte[] request) {

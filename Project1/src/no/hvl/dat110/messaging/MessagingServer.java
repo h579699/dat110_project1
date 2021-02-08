@@ -34,7 +34,6 @@ public class MessagingServer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 
 		return connection;
 

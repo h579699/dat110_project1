@@ -5,8 +5,6 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import no.hvl.dat110.TODO;
-
 public class Connection {
 
 	private DataOutputStream outStream; // for writing bytes to the underlying TCP connection
@@ -42,15 +40,13 @@ public class Connection {
 			System.out.println("Connection: " + ex.getMessage());
 			ex.printStackTrace();
 		}
-		
-
 
 	}
 
 	public Message receive() {
 
 		Message message = new Message();
-		byte[] recvbuf = new byte[128];
+		byte[] recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 
 		// read a segment (128 bytes) from the input stream and decapsulate into message
 		// Hint: create a new Message object and use the decapsulate method
@@ -63,7 +59,6 @@ public class Connection {
 		
 		message.decapsulate(recvbuf);
 		
-
 		return message;
 
 	}
